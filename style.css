@@ -1,0 +1,112 @@
+/*ROBOTO FONT 500 700*/
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+
+/*CORE STYLES*/
+* {
+   box-sizing: border-box; 
+}
+
+body {
+    /*in order to center all projects*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /*needed for justify-content to work*/
+    overflow: hidden; /*get rid of all default scrollbars*/
+    margin: 0;
+    font-family: 'Muli', sans-serif;
+    background-color: #f8f7fb;
+}
+
+/*CONTAINER*/
+.container {
+    text-align: center;
+}
+
+/*PROGRESS CONTAINER*/
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+/*PSEUDO ELEMENT*/
+/*https://www.youtube.com/watch?v=zGiirUiWslI*/
+.progress-container::before {
+    /*inserted before the content of the progress-container*/
+    /*always needed when used with ::before*/
+    content: '';
+    background-color: #e0e0e0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 100%; 
+    z-index: -1;
+}
+
+/*PROGRESS LINE*/
+.progress {
+    background-color: #3498db;
+    /*will be positioned absolutely
+    relative to the progress-container*/
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    /*starter length of progress*/
+    width: 0%; 
+    /*making sure the line is behind the circles*/
+    z-index: -1;
+    transition: .4s ease;
+}
+
+/*CIRCLES*/
+.circle {
+    /*centering the numbers within
+    the circled divs*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    color: #999;
+    background-color: white;
+    border-radius: 50%;
+    border: 3px solid #e0e0e0;
+    transition: .4s ease;
+}
+
+/*chaining classes*/
+.circle.active {
+    color: #3498db;
+    border-color: #3498db;
+}
+
+/*BUTTONS*/
+.btn {
+    margin: 5px;
+    padding: 8px 30px;
+    cursor: pointer;
+    /*nice time-saving hack I should 
+    start to use more*/
+    font-family: inherit;
+    font-size: 14px;
+    color: white;
+    background-color: #3498db;
+    border: 0;
+    border-radius: 6px;
+}
+
+.btn:active {
+    transform: scale(.98);
+}
+
+/*nice way to target disabled form components*/
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+}
